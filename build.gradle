@@ -2,6 +2,8 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.11'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'com.diffplug.spotless' version '6.11.0'
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 }
 
 group = 'com.real-time'
@@ -35,8 +37,6 @@ dependencies {
 
 	// DB
 	runtimeOnly ('mysql:mysql-connector-java:8.0.31') //mysql8
-//	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.31'
-//	runtimeOnly 'mysql:mysql-connector-java:5.1.47' //mysql5
 	implementation ('org.springframework.boot:spring-boot-starter-jdbc')
 	implementation ('org.springframework.boot:spring-boot-starter-data-jpa')
 
@@ -62,4 +62,27 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+spotless {
+	java {
+		target("**/*.java")
+
+		// import 순서
+		importOrder 'java', 'javax', 'org', 'com', ''
+
+		// 미사용 import 제거
+		removeUnusedImports()
+
+		googleJavaFormat().aosp()
+
+		// 간격
+		indentWithSpaces(4)
+
+		// 공백 제거
+		trimTrailingWhitespace()
+
+		// 끝부분 NewLine
+		endWithNewline()
+	}
 }
