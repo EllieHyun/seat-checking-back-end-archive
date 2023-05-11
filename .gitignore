@@ -36,3 +36,5 @@ out/
 logs/
 .env
 **.env
+
+application-*.properties
