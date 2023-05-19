@@ -1,10 +1,11 @@
 package com.realtime.seatspringbootbackend.common.exceptions;
 
-import static com.realtime.seatspringbootbackend.common.exceptions.ErrorCode.INTERNAL_ERROR;
-import static com.realtime.seatspringbootbackend.common.exceptions.ErrorCode.INVALID_FIELD_VALUE;
+import static com.realtime.seatspringbootbackend.common.code.ResponseCode.INTERNAL_ERROR;
+import static com.realtime.seatspringbootbackend.common.code.ResponseCode.INVALID_FIELD_VALUE;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
+import com.realtime.seatspringbootbackend.common.code.ResponseCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,9 +51,9 @@ public class ExceptionAdvice {
     @ExceptionHandler(BaseException.class)
     public ResponseEntity<ErrorResponse> handleBaseException(BaseException exception) {
         log.warn("BaseException. error message: {}", exception.getMessage());
-        final ErrorCode errorCode = exception.getErrorCode();
-        final ErrorResponse response = new ErrorResponse(errorCode);
-        return new ResponseEntity<>(response, errorCode.getStatus());
+        final ResponseCode responseCode = exception.getResponseCode();
+        final ErrorResponse response = new ErrorResponse(responseCode);
+        return new ResponseEntity<>(response, responseCode.getStatus());
     }
 
     @ExceptionHandler(Exception.class)

@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import com.realtime.seatspringbootbackend.common.code.ResponseCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,7 +32,7 @@ public class ErrorResponse {
 
     private final String timestamp = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
 
-    public ErrorResponse(ErrorCode status) {
+    public ErrorResponse(ResponseCode status) {
         this.isSuccess = false;
         this.message = status.getMessage();
         this.status = status.getStatus().value();
@@ -38,7 +40,7 @@ public class ErrorResponse {
         this.code = status.getCode();
     }
 
-    public ErrorResponse(ErrorCode status, BindingResult bindingResult) {
+    public ErrorResponse(ResponseCode status, BindingResult bindingResult) {
         this.isSuccess = false;
         this.message = status.getMessage();
         this.status = status.getStatus().value();

@@ -1,10 +1,7 @@
 package com.realtime.seatspringbootbackend.src.store.domain;
-
-import com.realtime.seatspringbootbackend.src.global.StateEnum;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
@@ -72,9 +69,5 @@ public class StoreEntity {
 
     @Column(name = "use_time_limit", nullable = true)
     private int useTimeLimit;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "state", nullable = false)
-    private StateEnum state;
 
 }
