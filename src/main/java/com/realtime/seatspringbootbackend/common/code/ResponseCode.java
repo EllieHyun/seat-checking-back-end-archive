@@ -1,15 +1,15 @@
-package com.realtime.seatspringbootbackend.common.exceptions;
-
-import static org.springframework.http.HttpStatus.*;
+package com.realtime.seatspringbootbackend.common.code;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-/** 에러 코드 관리 */
+import static org.springframework.http.HttpStatus.*;
+
+/** 에러 및 성공 코드 관리 */
 @Getter
 @AllArgsConstructor
-public enum ErrorCode {
+public enum ResponseCode {
     /** 200 : 요청 성공 */
     SUCCESS(OK, "OK", "요청에 성공하였습니다."),
 

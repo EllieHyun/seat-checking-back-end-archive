@@ -1,6 +1,6 @@
 package com.realtime.seatspringbootbackend.common.response;
 
-import static com.realtime.seatspringbootbackend.common.exceptions.ErrorCode.SUCCESS;
+import static com.realtime.seatspringbootbackend.common.code.ResponseCode.SUCCESS;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

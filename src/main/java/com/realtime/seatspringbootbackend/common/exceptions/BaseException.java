@@ -1,5 +1,6 @@
 package com.realtime.seatspringbootbackend.common.exceptions;
 
+import com.realtime.seatspringbootbackend.common.code.ResponseCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,9 +9,5 @@ import lombok.Getter;
 @Builder
 @AllArgsConstructor
 public class BaseException extends RuntimeException {
-    private final ErrorCode errorCode;
-
-    public static BaseException from(ErrorCode errorCode) {
-        return new BaseException(errorCode);
-    }
+    private final ResponseCode responseCode;
 }

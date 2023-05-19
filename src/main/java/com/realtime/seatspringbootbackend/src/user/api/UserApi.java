@@ -41,10 +41,7 @@ public class UserApi {
 
     @Operation(summary = "일반 사용자 회원가입")
     @PostMapping("/sign-up")
-    public String userSignUp(@Valid @RequestBody UserSignUpReq userSignUpReq) {
-        System.out.println(userSignUpReq.getNickname());
+    public void userSignUp(@Valid @RequestBody UserSignUpReq userSignUpReq) {
         userSignUpService.userSignUp(userSignUpReq);
-
-        return "회원가입이 완료됐습니다.";
     }
 }

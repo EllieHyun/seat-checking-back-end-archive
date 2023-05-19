@@ -1,8 +1,6 @@
 package com.realtime.seatspringbootbackend.src.store.api;
 
 import com.realtime.seatspringbootbackend.src.store.domain.StoreEntity;
-import com.realtime.seatspringbootbackend.src.store.dto.StoreCreateDto;
-import com.realtime.seatspringbootbackend.src.store.dto.StoreUpdateDto;
 import com.realtime.seatspringbootbackend.src.store.exception.StoreNotFoundException;
 import com.realtime.seatspringbootbackend.src.store.service.StoreService;
 import lombok.RequiredArgsConstructor;
