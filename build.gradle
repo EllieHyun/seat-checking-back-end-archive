@@ -3,7 +3,6 @@ plugins {
 	id 'org.springframework.boot' version '2.7.11'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'com.diffplug.spotless' version '6.11.0'
-	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 }
 
 group = 'com.real-time'
@@ -28,7 +27,7 @@ dependencies {
 	testImplementation ('org.springframework.boot:spring-boot-starter-test')
 
 	// Security
-	implementation 'org.springframework.boot:spring-boot-starter-security'
+//	implementation 'org.springframework.boot:spring-boot-starter-security' // 401error 조사
 
 	// Lombok
 	implementation ('org.projectlombok:lombok')
@@ -58,6 +57,9 @@ dependencies {
 
 	// s3
 	implementation 'com.amazonaws:aws-java-sdk-s3control:1.12.372'
+
+	// Use ConfigurationProperties
+	annotationProcessor ('org.springframework.boot:spring-boot-configuration-processor')
 }
 
 tasks.named('test') {
