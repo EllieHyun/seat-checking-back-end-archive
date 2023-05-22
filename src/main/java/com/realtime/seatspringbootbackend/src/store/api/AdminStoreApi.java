@@ -2,7 +2,6 @@ package com.realtime.seatspringbootbackend.src.store.api;
 
 import com.realtime.seatspringbootbackend.common.code.ResponseCode;
 import com.realtime.seatspringbootbackend.common.exceptions.BaseException;
-import com.realtime.seatspringbootbackend.common.response.BaseResponse;
 import com.realtime.seatspringbootbackend.src.store.domain.StoreEntity;
 import com.realtime.seatspringbootbackend.src.store.dto.request.StoreCreateRequestDto;
 import com.realtime.seatspringbootbackend.src.store.dto.request.StoreUpdateRequestDto;
@@ -36,8 +35,7 @@ public class AdminStoreApi {
     }
 
     @PostMapping
-    public void postStore(
-            @RequestBody @Valid StoreCreateRequestDto storeCreateRequestDto) {
+    public void postStore(@RequestBody @Valid StoreCreateRequestDto storeCreateRequestDto) {
         try {
             storeService.save(storeCreateRequestDto);
         } catch (Exception e) {
@@ -47,12 +45,24 @@ public class AdminStoreApi {
     }
 
     @PatchMapping("/{id}")
-    public void pathStore(@PathVariable Long id, @RequestBody StoreUpdateRequestDto storeUpdateRequestDto) {
+    public void updateStore(
+            @PathVariable Long id, @RequestBody StoreUpdateRequestDto storeUpdateRequestDto) {
         try {
             storeService.update(id, storeUpdateRequestDto);
-        } catch(StoreNotFoundException e) {
+        } catch (StoreNotFoundException e) {
             throw new BaseException(e.getResponseCode());
-        } catch(Exception e) {
+        } catch (Exception e) {
+            throw new BaseException(ResponseCode.INTERNAL_ERROR);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteStore(@PathVariable Long id) {
+        try {
+            storeService.delete(id);
+        } catch (StoreNotFoundException e) {
+            throw new BaseException(e.getResponseCode());
+        } catch (Exception e) {
             throw new BaseException(ResponseCode.INTERNAL_ERROR);
         }
     }

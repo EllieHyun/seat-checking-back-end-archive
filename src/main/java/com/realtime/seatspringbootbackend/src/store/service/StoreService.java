@@ -1,17 +1,16 @@
 package com.realtime.seatspringbootbackend.src.store.service;
 
 import com.realtime.seatspringbootbackend.common.code.ResponseCode;
+import com.realtime.seatspringbootbackend.common.entity.BaseEntity;
 import com.realtime.seatspringbootbackend.common.utils.EnumUtils;
 import com.realtime.seatspringbootbackend.src.store.domain.StoreEntity;
 import com.realtime.seatspringbootbackend.src.store.dto.request.StoreCreateRequestDto;
 import com.realtime.seatspringbootbackend.src.store.dto.request.StoreUpdateRequestDto;
-import com.realtime.seatspringbootbackend.src.store.exception.StoreErrorCode;
 import com.realtime.seatspringbootbackend.src.store.exception.StoreNotFoundException;
 import com.realtime.seatspringbootbackend.src.store.repository.StoreRepository;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,8 +43,13 @@ public class StoreService {
     }
 
     @Transactional
-    public void update(Long id, StoreUpdateRequestDto storeUpdateRequestDto) throws StoreNotFoundException {
-        StoreEntity storeEntity = storeRepository.findById(id).orElseThrow(() -> new StoreNotFoundException(ResponseCode.STORE_NOT_FOUND));
+    public void update(Long id, StoreUpdateRequestDto storeUpdateRequestDto)
+            throws StoreNotFoundException {
+        StoreEntity storeEntity =
+                storeRepository
+                        .findById(id)
+                        .orElseThrow(
+                                () -> new StoreNotFoundException(ResponseCode.STORE_NOT_FOUND));
         storeEntity.setName(storeUpdateRequestDto.getName());
         storeEntity.setIntroduction(storeUpdateRequestDto.getIntroduction());
         storeEntity.setLocation(storeUpdateRequestDto.getLocation());
@@ -60,5 +64,15 @@ public class StoreService {
         storeEntity.setSunBusinessHours(storeUpdateRequestDto.getSunBusinessHours());
         storeEntity.setBreakTime(storeUpdateRequestDto.getBreakTime());
         storeEntity.setUseTimeLimit(storeUpdateRequestDto.getUseTimeLimit());
+    }
+
+    @Transactional
+    public void delete(Long id) throws StoreNotFoundException {
+        StoreEntity storeEntity =
+                storeRepository
+                        .findById(id)
+                        .orElseThrow(
+                                () -> new StoreNotFoundException(ResponseCode.STORE_NOT_FOUND));
+        storeEntity.setState(BaseEntity.State.INACTIVE);
     }
 }

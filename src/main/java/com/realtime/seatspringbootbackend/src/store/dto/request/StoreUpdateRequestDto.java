@@ -2,13 +2,12 @@ package com.realtime.seatspringbootbackend.src.store.dto.request;
 
 import com.realtime.seatspringbootbackend.src.store.domain.DayEnum;
 import com.realtime.seatspringbootbackend.src.store.domain.KindEnum;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
+import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import java.util.List;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Getter
