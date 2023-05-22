@@ -1,14 +1,15 @@
 package com.realtime.seatspringbootbackend.src.store.exception;
 
+import com.realtime.seatspringbootbackend.common.code.ResponseCode;
 import lombok.Getter;
 
 @Getter
-public class StoreNotFoundException extends Exception{
+public class StoreNotFoundException extends Exception {
 
-    private final StoreErrorCode storeErrorCode;
+    private final ResponseCode responseCode;
 
-    public StoreNotFoundException(StoreErrorCode storeErrorCode) {
-        super(storeErrorCode.getMessage());
-        this.storeErrorCode = storeErrorCode;
+    public StoreNotFoundException(ResponseCode responseCode) {
+        super(responseCode.getMessage());
+        this.responseCode = responseCode;
     }
 }

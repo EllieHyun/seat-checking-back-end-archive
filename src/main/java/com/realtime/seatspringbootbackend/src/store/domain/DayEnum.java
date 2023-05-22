@@ -6,7 +6,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum DayEnum {
-
     MON("MON"),
     TUE("TUE"),
     WED("WED"),

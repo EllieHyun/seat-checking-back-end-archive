@@ -2,16 +2,17 @@ package com.realtime.seatspringbootbackend.src.store.dto.request;
 
 import com.realtime.seatspringbootbackend.src.store.domain.DayEnum;
 import com.realtime.seatspringbootbackend.src.store.domain.KindEnum;
-import java.util.List;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import lombok.*;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
-public class StoreCreateRequestDto {
-
+public class StoreUpdateRequestDto {
     @NotBlank(message = "가게 이름을 입력해주세요.")
     private String name;
 

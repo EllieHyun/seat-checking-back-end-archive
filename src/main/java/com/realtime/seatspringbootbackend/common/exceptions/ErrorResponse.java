@@ -2,14 +2,13 @@ package com.realtime.seatspringbootbackend.common.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.realtime.seatspringbootbackend.common.code.ResponseCode;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-
-import com.realtime.seatspringbootbackend.common.code.ResponseCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

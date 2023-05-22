@@ -1,11 +1,8 @@
 package com.realtime.seatspringbootbackend.src.store.domain;
-import com.realtime.seatspringbootbackend.common.entity.BaseEntity;
-import lombok.*;
 
+import com.realtime.seatspringbootbackend.common.entity.BaseEntity;
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
+import lombok.*;
 
 @Getter
 @Setter
@@ -73,7 +70,4 @@ public class StoreEntity extends BaseEntity {
 
     @Column(name = "avg_use_time", nullable = false)
     private int avgUseTime;
-
-
-
 }
